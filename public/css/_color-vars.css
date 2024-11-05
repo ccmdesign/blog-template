@@ -1,4 +1,12 @@
 :root {
   --color-dark: #333;
   --color-light: #efefef;
+
+
+  --base-color: #333;
+  --white-color: #efefef;
+  
+  --light-text-color: #efefef;
+  --dark-text-color: #333;
+
 }

@@ -1,13 +1,20 @@
 <template>
-    <main>
-      <div class="center">
-        <nuxt-link to="/updates">Back to Blog</nuxt-link>
-        <img :src="data.blog.cover_image" alt="">
-        <h1>{{ data.blog.title }}</h1>
-        <p class="hero__tagline">{{ data.blog.meta }}</p>
-        <div v-html="data.blog.main_content"></div>
-      </div>
-    </main> 
+    <article>
+      <blog-header />
+      
+      <main>
+        <blog-section>
+          <div class="center">
+            <h1>{{ data.blog.title }}</h1>
+            <img :src="data.blog.cover_image" alt="">
+            <p class="hero__tagline">{{ data.blog.meta }}</p>
+            <div v-html="data.blog.main_content"></div>
+          </div>
+        </blog-section>
+      </main> 
+      
+      <blog-footer />
+    </article>
 </template>
 
 <script setup>

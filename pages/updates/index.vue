@@ -1,12 +1,16 @@
 <template>
+  <blog-header />
   <main>
-    <ul>
-      <li v-for="item in data.items" v-bind:key="item.slug">
-        <nuxt-link :to="item.url">{{ item }}</nuxt-link>
-      </li>
-    </ul>
-      
+    <blog-section>
+      <div class="center">
+        <ul class="grid" role="list">
+          <blog-card v-for="item in data.items" v-bind:key="item.slug" :content="item" />
+        </ul>
+      </div>
+    </blog-section>
+    
   </main>
+  <blog-footer />
 </template>
 
 <script setup>
