@@ -31,25 +31,31 @@ export default defineNuxtConfig({
       ],
     }
   },
+
   css: [
     '@/public/css/theme.css',
     '@/public/css/styles.css',
   ],
+
   components: {
     "dirs": [
       "~/components"
     ]
   },
+
   modules: [
     '@nuxt/content',
     'nuxt-simple-sitemap',
     '@nuxtjs/robots'
   ],
+
   build: {
     postcss: {
       plugins: {
         'postcss-import': {},
       }
     }
-  }
+  },
+
+  compatibilityDate: '2024-11-13'
 });

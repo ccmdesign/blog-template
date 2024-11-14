@@ -1,16 +1,19 @@
 <template>
   <div class="blog-card" :content="content">
+    <div v-if="content.featured" class="featured">FEATURED</div>
     <slot>
-      <div class="stack">
+      <div class="stack" >
         <img src="" alt="">
         <h4>{{ content.brow }}</h4>
         <h3><nuxt-link :to="content.url">{{ content.title }}</nuxt-link></h3>
-        <div>
-          <base-button :to="content.url">{{ content.actionLabel }}</base-button>
-        </div>
+        <nuxt-link :to="content.url">
+          <base-button>{{ content.actionLabel }}</base-button>
+        </nuxt-link>
         <h4>Tags</h4>
         <div class="cluster">
-          <blog-chip v-for="i in content.tags">{{ i }}</blog-chip>
+          <nuxt-link v-for="tag in content.tags" :to="`/updates/tags/${tag.tag_slug}`">
+            <blog-chip>{{ tag.tag_label }}</blog-chip>
+          </nuxt-link>
         </div>
         <!-- <pre>{{content}}</pre> -->
       </div>
@@ -39,9 +42,22 @@ defineProps({
   border: 1px solid var(--base-color);
   padding-block: var(--card-padding-block);
   padding-inline: var(--card-padding-inline);
+  position: relative;
   
   > * {
     --_stack-space: var(--space-xs);
+  }
+
+  .featured {
+    font-size: var(--size--2);
+    border-bottom-left-radius: 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px 10px;
+    background: #000;
+    color: white;
+    font-weight: 800;
   }
 }
 

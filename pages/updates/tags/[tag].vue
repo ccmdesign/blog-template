@@ -32,7 +32,11 @@
           { name: 'twitter:description', content: 'Blog Template' },
       ]
   })
-const blog = await queryContent('blogposts').find();
+
+const route = useRoute()
+const blog = await queryContent('blogposts').where({ 'array_of_tag_slug': {
+  $contains: route.params.tag
+} }).find()
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -40,6 +44,8 @@ const data = reactive({
     items: [],
     featuredItems: []
 });
+
+
 
 watchEffect(() => {
   // Reorder the items array based on the date attribute

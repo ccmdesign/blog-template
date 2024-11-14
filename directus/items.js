@@ -17,6 +17,16 @@ const objectContructor = async (dir, fs) => {
     i.title = item.heading;
     i.cover_image = item.cover_image ? common.getImage(item.cover_image.id) : '';
 
+    i.tags = item.tags.map(tag => ({
+      tag_slug: common.slugify(tag),
+      tag_label: tag
+    }))
+
+    i.array_of_tag_slug = item.tags.map(item => common.slugify(item))
+
+    //USED FOR TEST, REMOVE AFTER
+    i.featured = Math.ceil(Math.random() * 11) > 5
+
     fs.writeFile(
       dir + "/" + i.slug + ".json",
       JSON.stringify(i),
