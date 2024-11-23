@@ -38,7 +38,9 @@
       { name: "twitter:description", content: "Blog Template" },
     ],
   });
-  const blog = await queryContent("blogposts").find();
+  const blog = await queryContent("blogposts").sort({ date: -1 }).find();
+
+  console.log(34, blog);
 
   const months = [
     "Jan",
@@ -58,11 +60,6 @@
   const data = reactive({
     items: [],
     featuredItems: [],
-  });
-
-  watchEffect(() => {
-    // Reorder the items array based on the date attribute
-    data.items.sort((a, b) => b.stringDate.localeCompare(a.stringDate));
   });
 
   blog.forEach((post) => {

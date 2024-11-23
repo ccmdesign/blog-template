@@ -9,23 +9,20 @@ const objectContructor = async (dir, fs) => {
   const junctionFields = [
   ]
 
-  const items = await common.getDirectusData("d4p_items");
+  const resources = await common.getDirectusData("reboot_democracy_resources", undefined, false);
 
-  await items.data.forEach((item) => {
-    let i = { ...item };
-    i.slug = common.slugify(item.heading);
-    i.title = item.heading;
-    i.cover_image = item.cover_image ? common.getImage(item.cover_image.id) : '';
 
-    i.tags = item.tags.map(tag => ({
-      tag_slug: common.slugify(tag),
-      tag_label: tag
-    }))
-
-    i.array_of_tag_slug = item.tags.map(item => common.slugify(item))
-
-    //USED FOR TEST, REMOVE AFTER
-    i.featured = Math.ceil(Math.random() * 11) > 5
+  await resources.data.forEach((item) => {
+    let i = {};
+    i.date = item.date ? common.toLocalISOString(item.date) : '';
+    i.slug = common.slugify(item.title);
+    i.title = item.title;
+    i.thumbnail = item.thumbnail ? common.getImage(item.thumbnail.id) : '';
+    i.description = item.description;
+    i.type = item.type;
+    i.url = item.link;
+    i.parter = item.partner;
+    i.stage = item.stage;
 
     fs.writeFile(
       dir + "/" + i.slug + ".json",
@@ -34,13 +31,13 @@ const objectContructor = async (dir, fs) => {
         if (err) console.log("error", err);
       }
     );
-    console.log("WRITING BLOGPOST: ", i.slug + ".json");
+    console.log("WRITING RESOURCES: ", i.slug + ".json");
   });
 }
 
-const getItems = async () => {
+const getResources = async () => {
   
-  const dir = "./content/blogposts";
+  const dir = "./content/resources";
   if (fs.existsSync(dir)) {
     rimraf(dir, async () => {
       if (!fs.existsSync(dir)) {
@@ -70,5 +67,5 @@ const getItems = async () => {
 }
 
 module.exports = {
-  getItems
+  getResources
 }

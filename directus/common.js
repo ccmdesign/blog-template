@@ -5,11 +5,11 @@ const CONTENT_STATUS = process.env.DEV ? JSON.parse(process.env.DEV) : ["publish
 const directus = new Directus(process.env.BASE_URL);
 
 // get content from directus
-const getDirectusData = async (collectionName, junctionFields=undefined) => {
+const getDirectusData = async (collectionName, junctionFields=undefined, hasStatus=true) => {
   const content = await directus.items(collectionName).readByQuery({
     fields: junctionFields ? [`*.*`, ...junctionFields] : ['*.*'],
     limit: -1,
-    filter: {
+    filter: !hasStatus ? {} : {
       "status": {
         "_in" : CONTENT_STATUS
       }
@@ -64,6 +64,14 @@ const formatDate = (date) => {
   );
 }
 
+const toLocalISOString = (date) => {
+  if (!date) return '';
+  const dateObj = new Date(date);
+  const off = dateObj.getTimezoneOffset();
+  const localDate = new Date(dateObj.getTime() - (off*60*1000));
+  return localDate.toISOString().split('T')[0];
+}
+
 const formatTime = (date) => {
   if (!date) return '';
 
@@ -80,5 +88,6 @@ module.exports = {
   getImage,
   slugify,
   formatDate,
-  formatTime
+  formatTime,
+  toLocalISOString
  };
