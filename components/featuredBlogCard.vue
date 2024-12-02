@@ -44,7 +44,9 @@
     border: 1px solid var(--base-color);
     padding-block: var(--card-padding-block);
     padding-inline: var(--card-padding-inline);
+    background-color: #fff;
     position: relative;
+    aspect-ratio: 16/9;
 
     > * {
       --_stack-space: var(--space-xs);
@@ -58,7 +60,7 @@
       top: 0;
       padding: 5px 10px;
       background: #000;
-      color: white;
+      color: var(--base-color);
       font-weight: 800;
     }
   }

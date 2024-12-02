@@ -17,26 +17,59 @@ body {
 /* Base typesetting */
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--display-font);
+}
+
+h1,
+h2,
+h3 {
   line-height: 1.05;
   letter-spacing: var(--tracking-s);
 }
 
-h1 {
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  letter-spacing: var(--tracking);
+}
+
+h1,
+.h1 {
   font-size: var(--size-5);
+  font-weight: 200;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
-h1:first-child {
-  margin-top: 0;
-}
-
-h2 {
+h2,
+.h2 {
   font-size: var(--size-4);
+  font-weight: 200;
 }
 
-h3 {
+h3,
+.h3 {
   font-size: var(--size-3);
+  font-weight: 200;
+}
+
+h4,
+.h4 {
+  font-size: var(--size-2);
+  font-weight: 200;
+}
+
+h5,
+.h5 {
+  font-size: var(--size-1);
+  font-weight: 200;
 }
 
 /* Set line lengths */
@@ -46,11 +79,11 @@ blockquote:not([class]) {
   max-width: 80ch;
 }
 
-h1,
+/* h1,
 h2,
 h3 {
   max-width: 20ch;
-}
+} */
 
 /* More generic elements */
 blockquote:not([class]) {

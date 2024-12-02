@@ -1,8 +1,9 @@
 <template>
-  <p class="announcement">
-    <strong>{{ announcement.title }}</strong>
-    {{ announcement.text }}
-  </p>
+  <div class="announcement">
+    <p>
+      <strong>{{ announcement.title }}</strong> {{ announcement.text }}
+    </p>
+  </div>
 </template>
 
 <script setup>
@@ -19,14 +20,25 @@
 
 <style lang="scss" scoped>
   .announcement {
-    --_annoucement-text-color: red;
-    --_annoucement-title-color: var(--base-color);
+    --_announcement-text-color: var(--white-color);
+    --_announcement-title-color: var(--white-color);
+    --_announcement-bg: rgba(0, 0, 0, 0.3);
   }
 
   .announcement {
     padding-inline: var(--base-padding-inline);
     padding-block: var(--base-padding-block);
+    display: flex;
+    align-items: center;
     color: var(--_announcement-text-color);
+    background-color: var(--_announcement-bg);
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    max-width: none;
   }
 
   strong {

@@ -11,6 +11,9 @@
   --secondary-color: hsla(var(--secondary-hsl), 1);
   --accent-color: hsla(var(--accent-hsl), 1);
   --base-color: hsla(var(--base-hsl), 1);
+
+  --white-color: #fff;
+  --black-hsl: 0, 0%, 0%;
 }
 
 :root {

@@ -1,29 +1,76 @@
 <template>
-  <header class="hero">
-    <blog-nav />
-    <blog-announcement />
-    <blog-headings />
-    <div class="center">
-      <div class="stack">
-        <nuxt-link v-if="$route.path !== '/updates'" to="/updates"
-          >Back to Blog</nuxt-link
-        >
-      </div>
+  <header class="hero" :mini="mini" :min-height="minHeight">
+    <div class="hero__top">
+      <slot name="hero-top">
+        <blog-announcement />
+      </slot>
+    </div>
+
+    <div class="hero__middle" v-if="!mini">
+      <slot>
+        <blog-headings />
+      </slot>
+    </div>
+
+    <div class="hero__bottom">
+      <slot name="hero-bottom"></slot>
     </div>
   </header>
 </template>
 
-<script setup></script>
+<script setup>
+  defineProps({
+    mini: {
+      type: Boolean,
+      default: false,
+    },
+    minHeight: {
+      type: String,
+      default: "80svh",
+    },
+  });
+</script>
 
 <style lang="scss" scoped>
   .hero {
-    --_header-bg: var(--primary-color);
-    --_header-color: var(--light-text-color);
+    --_hero-bg-fancy: var(--gradient);
+    --_hero-bg-color: var(--base-color);
+    --_hero-color: var(--white-color);
+    --_hero-min-height: v-bind(minHeight);
+  }
+
+  .hero:deep(*) {
+    --_headings-text-color: var(--white-color);
+  }
+
+  .hero[mini="true"] {
+    --_hero-min-height: auto;
   }
 
   .hero {
-    background-color: var(--_header-bg);
-    color: var(--_header-color);
-    padding-bottom: var(--space-xl);
+    background-color: var(--_hero-bg-color);
+    background: var(--_hero-bg-fancy, var(--_hero-bg-color));
+    color: var(--_hero-color);
+    min-height: var(--_hero-min-height);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "top" "middle" "bottom";
+  }
+
+  .hero__top {
+    grid-area: top;
+  }
+
+  .hero__middle {
+    grid-area: middle;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__bottom {
+    grid-area: bottom;
   }
 </style>

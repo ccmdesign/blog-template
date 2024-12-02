@@ -31,6 +31,10 @@
   gap: var(--_cluster-space, 1rem);
   justify-content: flex-start;
   align-items: center;
+
+  & [split] {
+    margin-right: auto;
+  }
 }
 
 /* Grid */

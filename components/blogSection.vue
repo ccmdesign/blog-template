@@ -1,5 +1,5 @@
 <template>
-  <section class="base-section">
+  <section class="base-section | prose">
     <slot />
   </section>
 </template>

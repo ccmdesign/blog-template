@@ -1,12 +1,17 @@
 <template>
-  <blog-hero />
+  <blog-hero>
+    <template #hero-bottom>
+      <featured-blog-section layout="reel">
+        <blog-card
+          featured
+          v-for="(item, index) in data.featuredItems.slice(0, 4)"
+          :key="`featured-${item.slug}`"
+          :content="item" />
+      </featured-blog-section>
+    </template>
+  </blog-hero>
   <main>
-    <featured-blog-section>
-      <featured-blog-card
-        v-for="item in data.featuredItems"
-        :key="`featured-${item.slug}`"
-        :content="item" />
-    </featured-blog-section>
+    <blog-partners />
 
     <blog-section>
       <div class="center">
@@ -20,7 +25,6 @@
       </div>
     </blog-section>
   </main>
-  <blog-footer />
 </template>
 
 <script setup>
@@ -86,7 +90,9 @@
       months[dateObj.getMonth()]
     } ${dateObj.getDate()}, ${dateObj.getFullYear()}`;
 
-    data.items.push(item);
+    if (!item.featured) {
+      data.items.push(item);
+    }
 
     if (item.featured) {
       data.featuredItems.push(item);
@@ -94,4 +100,8 @@
   });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+  .grid {
+    --base-grid-width: 300px;
+  }
+</style>
