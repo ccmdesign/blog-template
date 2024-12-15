@@ -4,7 +4,6 @@
       <h4 split>Partners</h4>
       <div class="cluster">
         <img src="/images/govlab-logo.svg" alt="" />
-
         <img src="/images/burnes-center-logo.svg" alt="" />
       </div>
     </div>
@@ -15,7 +14,6 @@
 
 <style lang="scss" scoped>
   section {
-    background-color: red;
   }
 
   .cluster {
@@ -29,5 +27,6 @@
 
   img {
     max-width: 200px;
+    max-height: 44px;
   }
 </style>

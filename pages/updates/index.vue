@@ -1,29 +1,8 @@
 <template>
-  <blog-hero>
-    <template #hero-bottom>
-      <featured-blog-section layout="reel">
-        <blog-card
-          featured
-          v-for="(item, index) in data.featuredItems.slice(0, 4)"
-          :key="`featured-${item.slug}`"
-          :content="item" />
-      </featured-blog-section>
-    </template>
-  </blog-hero>
   <main>
+    <blog-hero :content="data.featuredItems.slice(0, 4)" />
     <blog-partners />
-
-    <blog-section>
-      <div class="center">
-        <h2>All posts</h2>
-        <ul class="grid" role="list">
-          <blog-card
-            v-for="item in data.items"
-            v-bind:key="item.slug"
-            :content="item" />
-        </ul>
-      </div>
-    </blog-section>
+    <blog-post-list :content="data.items" />
   </main>
 </template>
 

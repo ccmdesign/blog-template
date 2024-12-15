@@ -1,9 +1,7 @@
 <template>
   <blog-hero mini />
   <div class="center">
-    <nuxt-link class="button" visual="unstyled" to="/updates"
-      >Back to Blog</nuxt-link
-    >
+    <nuxt-link class="button" visual="unstyled" to="/updates">Back to Blog</nuxt-link>
   </div>
 
   <article class="blogpost-layout">
@@ -26,6 +24,7 @@
         </div>
       </blog-section>
     </main>
+    
     <aside>
       <audio controls>
         <source :src="data.blog.audio_version" type="audio/mpeg" />
@@ -33,7 +32,12 @@
       </audio>
       <ul>
         <li v-for="i in data.blog.tags">
-          <nuxt-link :to="`/tags/${i.tag_slug}`">{{ i.tag_label }}</nuxt-link>
+          <blog-chip 
+            v-for="tag in content.tags" 
+            :key="tag.tag_slug" 
+            :path="tag.tag_slug" 
+            :label="tag.tag_label"
+          />
         </li>
       </ul>
       <p>{{ data.blog.date }}</p>
