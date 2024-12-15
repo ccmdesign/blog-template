@@ -4,22 +4,25 @@
     <slot>
       <div class="stack">
         <img src="" alt="" />
-        <h4>{{ content.brow }}</h4>
-        <h3>
-          <nuxt-link :to="content.url">{{ content.title }}</nuxt-link>
-        </h3>
+        <nuxt-link :to="content.url">
+          <blog-headings :content="content.headings" />
+        </nuxt-link>
+        
+        <h4>Tags</h4>
+        <div class="cluster">
+          <blog-chip 
+            v-for="tag in content.tags" 
+            :key="tag.tag_slug" 
+            :path="tag.tag_slug" 
+            :label="tag.tag_label"
+          />
+        </div>
+
         <nuxt-link :to="content.url">
           <base-button>{{ content.actionLabel }}</base-button>
         </nuxt-link>
-        <h4>Tags</h4>
-        <div class="cluster">
-          <nuxt-link
-            v-for="tag in content.tags"
-            :to="`/updates/tags/${tag.tag_slug}`">
-            <blog-chip>{{ tag.tag_label }}</blog-chip>
-          </nuxt-link>
-        </div>
-        <!-- <pre>{{content}}</pre> -->
+        
+        <pre>{{content}}</pre>
       </div>
     </slot>
   </div>
@@ -30,14 +33,23 @@
     content: {
       type: Object,
       default: () => ({
-        brow: "brow",
-        title: "",
+        headings: {
+          brow: "This is a static brow",
+          title: "This is a static title",
+          tagline: "Following criticism of Massachusetts' legislative opacity and a vote granting the state auditor oversight powers, my letter to the Globe argues we should adopt California's successful AI-driven legislative transparency model.",
+        },
         actionLabel: "Read more",
-        tags: [],
+        tags: ['test', 'test', 'test'],
         url: "",
       }),
     },
   });
+
+  // const headings = {
+  //   brow: content.brow,
+  //   title: content.title,
+  //   tagline: content.tagline,
+  // };
 </script>
 
 <style lang="scss" scoped>

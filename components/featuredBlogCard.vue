@@ -12,13 +12,14 @@
         </nuxt-link>
         <h4>Tags</h4>
         <div class="cluster">
-          <nuxt-link
-            v-for="tag in content.tags"
-            :to="`/updates/tags/${tag.tag_slug}`">
-            <blog-chip>{{ tag.tag_label }}</blog-chip>
-          </nuxt-link>
+          <blog-chip 
+            v-for="tag in content.tags" 
+            :key="tag.tag_slug" 
+            :path="tag.tag_slug" 
+            :label="tag.tag_label"
+          />
         </div>
-        <!-- <pre>{{content}}</pre> -->
+        <pre>{{content}}</pre>
       </div>
     </slot>
   </div>

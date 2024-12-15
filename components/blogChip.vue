@@ -1,31 +1,33 @@
 <template>
   <component
-    :is="content.url ? 'nuxt-link' : content.component || 'span'"
+    :is="path ? 'nuxt-link' : 'span'"
     class="chip"
-    :content="content"
-    :to="content.url">
+    :to="path">
     <slot>
-      {{ content.label || "Tag Name" }}
+      {{ label }}
     </slot>
   </component>
 </template>
 
 <script setup>
-  defineProps({
-    content: {
-      type: Object,
-      default: () => ({
-        url: "",
-        label: "Tag Name",
-        component: "span",
-      }),
+  const props = defineProps({
+    path: {
+      type: String,
+      default: "",
+    },
+    label: {
+      type: String,
+      default: "Tag Name",
     },
   });
+
+
 </script>
 
 <style lang="scss" scoped>
   .chip {
     --_chip-bg: var(--base-color-10-tint);
+    --_chip-bg: red;
     --_chip-color: var(--light-text-color);
     --_chip-padding: var(--space-3xs) var(--space-xs);
     --_chip-border-color: var(--base-color-30-tint);
