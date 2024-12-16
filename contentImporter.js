@@ -12,7 +12,7 @@ console.log('');
 console.log(chalk.green('[ REBOOT: BLOGPOSTS - RESOURCES - TEAM - DEMOCRACY - MODAL ]'));
 
 getBlogposts();
-getResources();
 getTeam();
-getDemocracy();
-getModal();
+// getDemocracy();
+// getModal();
+// getResources();

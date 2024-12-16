@@ -12,6 +12,11 @@ const objectContructor = async (dir, fs) => {
   const democracyData = await common.getDirectusData("reboot_democracy", undefined, false);
   const democracy = democracyData.data;
 
+  if(!Object.keys(democracy).length) {
+    console.log("No democracy data found.");
+    return;
+  }
+
   let i = { ...democracy };
   i.slug = common.slugify(democracy.title);
 

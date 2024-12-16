@@ -11,6 +11,10 @@ const objectContructor = async (dir, fs) => {
 
   const resources = await common.getDirectusData("reboot_democracy_resources", undefined, false);
 
+  if(!Object.keys(resources).length) {
+    console.log("No resources data found.");
+    return;
+  }
 
   await resources.data.forEach((item) => {
     let i = {};

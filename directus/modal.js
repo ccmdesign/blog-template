@@ -12,6 +12,11 @@ const objectContructor = async (dir, fs) => {
   const modalData = await common.getDirectusData("reboot_democracy_modal");
   const modal = modalData.data;
 
+  if(!Object.keys(modal).length) {
+    console.log("No modal data found.");
+    return;
+  }
+
   let i = { ...modal };
   i.slug = common.slugify(modal.title);
 
