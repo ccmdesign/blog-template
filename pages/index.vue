@@ -1,6 +1,7 @@
 <template>
   <main>
     <nuxt-link to="/updates">Updates</nuxt-link>
+    <nuxt-link to="/colors">Colors</nuxt-link>
   </main>
 </template>
 

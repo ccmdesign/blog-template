@@ -7,7 +7,7 @@
 }
 
 :root {
-  --primary-color: 207, 49%, 37%;
+  --primary-hsl: 207, 49%, 37%;
   --accent-hsl: 352, 60%, 55%;
   
   --base-900-hsl: 222, 43%, 9%;  /* Shades and Tints of Navy Blue */
