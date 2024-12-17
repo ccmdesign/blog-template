@@ -15,7 +15,9 @@ const objectContructor = async (dir, fs) => {
     let i = {};
     i.date = common.toLocalISOString(item.date);
     i.slug = item.slug ? item.slug : item.common.slugify(item.title);
+    i.brow = item.brow;
     i.title = item.title;
+    i.tagline = item.tagline;
     i.cover_image = item.image ? common.getImage(item.image.id) : '';
     i.audio_version = item.audio_version ? common.getImage(item.audio_version.id) : '';
     i.proof_read_prompt = item.proof_read_prompt;
