@@ -29,24 +29,34 @@
 
 <style lang="scss" scoped>
   .headings {
+    --_headings-brow-color: var(--accent-color);
+    --_headings-title-color: var(--base-color);
+    --_headings-tagline-color: var(--base-color-60-tint);
+  }
+  
+  .headings {
     box-sizing: border-box;
     padding-inline: var(--base-padding-inline);
     color: inherit;
-    --_headings-text-color: var(--base-color);
 
     h3 {
-      font-size: var(--size-1);
-      color: var(--_headings-text-color);
+      font-size: var(--size-0);
+      color: var(--_headings-brow-color);
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
     h1 {
-      font-size: var(--size-3);
-      color: var(--_headings-text-color);
+      font-size: var(--size-1);
+      line-height: 1.3;
+      color: var(--_headings-title-color);
     }
 
     h4 {
+      font-size: var(--size-0);
+      line-height: 1.5;
       font-weight: 300;
-      color: var(--_headings-text-color);
+      color: var(--_headings-tagline-color);
     }
 
     .stack {
