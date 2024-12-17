@@ -1,19 +1,31 @@
 <template>
-  <hgroup class="headings | center">
+  <hgroup class="headings | center" :brow="brow" :title="title" :tagline="tagline">
     <div class="stack">
       <slot>
-        <h3>Reboot Democracy</h3>
-        <h1>Blog</h1>
-        <h4>
-          The Reboot Democracy Blog explores the complex relationship among AI,
-          democracy and governance.
-        </h4>
+        <h3 v-if="brow">{{ brow }}</h3>
+        <h1 v-if="title">{{ title }}</h1>
+        <h4 v-if="tagline">{{ tagline }}</h4>
       </slot>
     </div>
   </hgroup>
 </template>
 
-<script setup></script>
+<script setup>
+  defineProps({
+    brow: {
+      type: String,
+      default: "Default Brow",
+    },
+    title: {
+      type: String,
+      default: "Default Title",
+    },
+    tagline: {
+      type: String,
+      default: "Default Tagline",
+    },
+  });
+</script>
 
 <style lang="scss" scoped>
   .headings {

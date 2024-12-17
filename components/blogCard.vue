@@ -1,11 +1,10 @@
 <template>
   <div class="blog-card" :content="content">
-    <div v-if="content.featured" class="featured">FEATURED</div>
     <slot>
       <div class="stack">
         <img src="" alt="" />
         <nuxt-link :to="content.url">
-          <blog-headings :content="content.headings" />
+          <blog-headings :title="content.title" :brow="content.brow" :tagline="content.tagline"/>
         </nuxt-link>
         
         <h4>Tags</h4>
