@@ -7,12 +7,16 @@
 }
 
 :root {
-  --primary-hsl: 210, 85%, 17%;
-  --secondary-hsl: 204, 42%, 27%;
-  --accent-hsl: 37, 98%, 53%;
-  --base-hsl: 210, 85%, 17%;
+  --primary-color: 207, 49%, 37%;
+  --accent-hsl: 352, 60%, 55%;
+  
+  --base-900-hsl: 222, 43%, 9%;  /* Shades and Tints of Navy Blue */
+  --base-700-hsl: 215, 40%, 19%; /* Shades and Tints of Navy Blue */
+  --base-500-hsl: 208, 31%, 35%; /* Shades and Tints of Navy Blue */
+  --base-300-hsl: 214, 25%, 56%; /* Shades and Tints of Navy Blue */
+  --base-100-hsl: 47, 44%, 89%;  /* Off-white */
 
-  --gradient: linear-gradient(101deg, #00b4f0 5.63%, #00d7d7 95.75%);
+  --base-hsl: var(--base-900-hsl);  /* Shades and Tints of Navy Blue */
 }
 
 /* Global variables - Optional */
