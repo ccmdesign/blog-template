@@ -10,11 +10,14 @@
   margin-block: 0;
 }
 .stack > * + * {
+  --_stack-space: var(--theme-stack-space);
   margin-block-start: var(--_stack-space, 1.5rem);
 }
 
 /* Center */
 .center {
+  --_center-measure: var(--theme-center-measure);
+
   width: 100%; /* Added this to force the max-width */
 
   box-sizing: content-box;
