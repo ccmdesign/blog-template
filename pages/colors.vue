@@ -53,6 +53,8 @@
 .swatch {
   aspect-ratio: 1;
   width: 120px;
+  padding: 8px;
+  font-size: 1rem;
 }
 
 </style>
