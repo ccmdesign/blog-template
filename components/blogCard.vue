@@ -19,6 +19,8 @@
         </nuxt-link>
       </div>
     </slot>
+
+    <!-- <pre>{{ content }}</pre> -->
   </div>
 </template>
 
