@@ -31,6 +31,13 @@
   });
 </script>
 
+<style>
+[container="blog-headigns"] {
+  container-type: inline-size;
+  container-name: blog-headings-container;
+}
+</style>
+
 <style lang="scss" scoped>
   .headings {
     --_headings-brow-font-family: var(--display-font);
@@ -52,15 +59,25 @@
     --_headings-title-text-transform: none;
 
     --_headings-tagline-font-family: var(--body-font);
-    --_headings-tagline-font-size: var(--size-0);
+    --_headings-tagline-font-size: var(--size--1);
     --_headings-tagline-font-style: normal;
     --_headings-tagline-font-weight: 300;
-    --_headings-tagline-color: var(--base-color-60-tint);
+    --_headings-tagline-color: var(--base-color-500);
     --_headings-tagline-background: transparent;
     --_headings-tagline-line-height: 1.5;
     --_headings-tagline-text-transform: none;
   }
   
+  @container (min-width: 700px) {
+    .headings {
+      --_headings-brow-font-size: var(--size-0);
+      --_headings-title-font-size: var(--size-2);
+      --_headings-title-line-height: 1;
+      --_headings-tagline-font-size: var(--size-1);
+      --_headings-tagline-color: var(--base-color-400);
+    }
+  }
+
   .headings {
     box-sizing: border-box;
     padding-inline: var(--base-padding-inline);
@@ -79,6 +96,7 @@
       line-height: var(--_headings-title-line-height);
       color: var(--_headings-title-color);
       text-transform: var(--_headings-title-text-transform);
+      
     }
 
     h4 {
@@ -88,17 +106,19 @@
       color: var(--_headings-tagline-color);
       text-transform: var(--_headings-tagline-text-transform);
     }
-    // This is temporary. The limitation of the characters will be made in Directus.
-
-    // The following CSS rules for the h4 element are used to create a multi-line text truncation effect.
-    // The display: -webkit-box; and -webkit-box-orient: vertical; properties are used to create a flexible box layout.
-    // The -webkit-line-clamp: 7; property limits the text to 7 lines, and overflow: hidden; hides any overflowing content.
-    // This approach is specific to WebKit-based browsers and is commonly used for truncating text with ellipsis.
+    
 
     .stack {
       --_stack-space: var(--space-2xs);
     }
   }
+
+  // This is temporary. The limitation of the characters will be made in Directus.
+
+  // The following CSS rules for the h4 element are used to create a multi-line text truncation effect.
+  // The display: -webkit-box; and -webkit-box-orient: vertical; properties are used to create a flexible box layout.
+  // The -webkit-line-clamp: 7; property limits the text to 7 lines, and overflow: hidden; hides any overflowing content.
+  // This approach is specific to WebKit-based browsers and is commonly used for truncating text with ellipsis.
 
   [clip="tagline"] h4 {
     display: -webkit-box;

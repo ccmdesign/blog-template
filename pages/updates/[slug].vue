@@ -1,27 +1,19 @@
 <template>
   <blog-hero mini />
   <div class="center">
-    <nuxt-link class="button" visual="unstyled" to="/updates">Back to Blog</nuxt-link>
+    
   </div>
 
   <article class="blogpost-layout">
     <main>
-      <blog-section>
-        <blogpost-headings>
-          <h3>This is a simulation of the brow</h3>
-          <h2>{{ data.blog.title }}</h2>
-          <h4>
-            This is a simulation for the tagline lorem ipsum dolor sit, amet
-            consectetur adipisicing elit modi temporibus necessitatibus totam
-            sequi explicabo.
-          </h4>
-        </blogpost-headings>
+      
+      <blog-section container="blog-headigns">
+        <nuxt-link class="button" visual="unstyled" to="/updates" icon="arrow_back">Back to Blog</nuxt-link>
+        <blog-headings :title="data.blog.title" :brow="data.blog.brow" :tagline="data.blog.tagline" />
       </blog-section>
       <blog-section>
-        <div class="center">
           <!-- <img :src="data.blog.cover_image" alt="" /> -->
           <div class="prose" v-html="data.blog.content"></div>
-        </div>
       </blog-section>
     </main>
     
@@ -43,11 +35,11 @@
       <p>{{ data.blog.date }}</p>
     </aside>
   </article>
-  <blog-footer />
 </template>
 
 <style lang="scss" scoped>
   .blogpost-layout {
+    
     display: grid;
     grid-template-columns: 1fr minmax(280px, 350px);
     grid-template-areas: "main sidebar";
