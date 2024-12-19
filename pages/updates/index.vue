@@ -50,6 +50,7 @@
       slug: post.slug,
       brow: post.brow,
       title: post.title,
+      tagline: post.tagline,
       description: post.excerpt,
       actionLabel: "Read more",
       tags: post.tags,

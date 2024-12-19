@@ -1,14 +1,11 @@
 <template>
   <div class="blog-card" :content="content">
-    <div v-if="content.featured" class="featured">FEATURED</div>
     <slot>
       <div class="stack">
         <img src="" alt="" />
-        <nuxt-link :to="content.url">
-          <blog-headings :content="content.headings" />
+        <nuxt-link :to="content.url" class="blog-card__content">
+          <blog-headings :title="content.title" :brow="content.brow" :tagline="content.tagline"/>
         </nuxt-link>
-        
-        <h4>Tags</h4>
         <div class="cluster">
           <blog-chip 
             v-for="tag in content.tags" 
@@ -17,12 +14,9 @@
             :label="tag.tag_label"
           />
         </div>
-
         <nuxt-link :to="content.url">
-          <base-button>{{ content.actionLabel }}</base-button>
+          <base-button color="primary">{{ content.actionLabel }}</base-button>
         </nuxt-link>
-        
-        <pre>{{content}}</pre>
       </div>
     </slot>
   </div>
@@ -54,21 +48,19 @@
 
 <style lang="scss" scoped>
   .blog-card {
-    padding-block: var(--card-padding-block);
-    padding-inline: var(--card-padding-inline);
+    --_card-padding-block: var(--card-padding-block);
+    --_card-padding-inline: var(--card-padding-inline);
+
+    padding: var(--_card-padding-block) var(--_card-padding-inline);
     position: relative;
 
     > * {
-      --_stack-space: var(--space-xs);
+      --theme-stack-space: var(--space-xs);
     }
   }
 
-  h4 {
-    font-size: var(--size--1);
-    text-transform: uppercase;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .blog-card__content {
+    flex: 1;
   }
 
   h3 {
@@ -87,10 +79,24 @@
 
   // @ToDo: This is part of styling, and should be abstracted to theme.css
   .blog-card {
-    border-radius: 8px;
+    border-radius: 0 8px 8px 0;
     background-color: white;
     border: 1px solid transparent;
     box-shadow: var(--box-shadow-s);
+
+    :before {
+      height: 100%;
+      content: "";
+      background-color: var(--accent-color);
+      width: 4px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  .blog-card .stack {
+    height: 100%;
   }
 
   .blog-card[featured] {
