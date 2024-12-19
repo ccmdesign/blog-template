@@ -4,7 +4,7 @@
       <div class="stack">
         <img src="" alt="" />
         <nuxt-link :to="content.url" class="blog-card__content">
-          <blog-headings :title="content.title" :brow="content.brow" :tagline="content.tagline"/>
+          <blog-headings :title="content.title" :brow="content.brow" :tagline="content.tagline" clip="tagline"/>
         </nuxt-link>
         <div class="cluster">
           <blog-chip 
