@@ -59,6 +59,17 @@
       color: var(--_headings-tagline-color);
     }
 
+    // The following CSS rules for the h4 element are used to create a multi-line text truncation effect.
+    // The display: -webkit-box; and -webkit-box-orient: vertical; properties are used to create a flexible box layout.
+    // The -webkit-line-clamp: 7; property limits the text to 7 lines, and overflow: hidden; hides any overflowing content.
+    // This approach is specific to WebKit-based browsers and is commonly used for truncating text with ellipsis.
+    h4 {
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
     .stack {
       --_stack-space: var(--space-2xs);
     }
