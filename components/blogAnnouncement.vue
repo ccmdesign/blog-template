@@ -1,7 +1,7 @@
 <template>
   <div class="announcement">
     <p>
-      <strong>{{ announcement.title }}</strong> {{ announcement.text }}
+      <strong>{{ announcement.title }}:</strong> {{ announcement.text }}
     </p>
   </div>
 </template>
@@ -21,8 +21,9 @@
 <style lang="scss" scoped>
   .announcement {
     --_announcement-text-color: var(--white-color);
-    --_announcement-title-color: var(--white-color);
-    --_announcement-bg: rgba(0, 0, 0, 0.3);
+    --_announcement-title-color: var(--accent-color);
+    --_announcement-bg: var(--base-color-700);
+    --_announcement-justify: left;
   }
 
   .announcement {
@@ -36,12 +37,13 @@
 
   p {
     margin: 0;
-    text-align: center;
+    text-align: var(--_announcement-justify);
     width: 100%;
     max-width: none;
   }
 
   strong {
     color: var(--_announcement-title-color);
+    text-transform: uppercase;
   }
 </style>
