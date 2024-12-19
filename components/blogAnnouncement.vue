@@ -24,11 +24,11 @@
     --_announcement-title-color: var(--accent-color);
     --_announcement-bg: var(--base-color-700);
     --_announcement-justify: left;
+    --_annoucement-padding: var(--base-padding-block) var(--base-padding-inline);
   }
 
   .announcement {
-    padding-inline: var(--base-padding-inline);
-    padding-block: var(--base-padding-block);
+    padding: var(--_annoucement-padding);
     display: flex;
     align-items: center;
     color: var(--_announcement-text-color);
