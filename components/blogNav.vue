@@ -17,8 +17,8 @@
         <a class="button" visual="unstyled" href="#">About</a>
         <a class="button" visual="unstyled" href="#">Events</a>
         <a class="button" visual="unstyled" href="#">Our Work</a>
-        <a class="button" visual="unstyled" href-="#">Contact</a>
-        <a class="button" href-="#">Signup</a>
+        <a class="button" visual="unstyled" href="#">Contact</a>
+        <a class="button" visual="primary" color="accent" href="#">Signup</a>
       </nav>
 
       <blog-search class="blog-nav__search" />

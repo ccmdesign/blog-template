@@ -36,8 +36,12 @@
   --base-padding-inline: var(--space-2xs);
 
   --section-padding-block: var(--space-l-xl);
+  
   --card-padding-block: var(--space-s-m);
   --card-padding-inline: var(--space-m-l);
+  
+  --button-padding-block: var(--space-2xs);
+  --button-padding-inline: var(--space-s);
 
   --base-gutter: var(--space-s-m);
   --stack-space: var(--space-xs-s);

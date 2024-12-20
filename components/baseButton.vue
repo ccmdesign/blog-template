@@ -88,12 +88,12 @@
   .button {
     /* Required Values */
     --_button-color-prop: v-bind(color);
-    --_button-hsl: var(--_button-color-prop, --base-hsl);
+    --_button-hsl: var(--_button-color-prop, --base-900-hsl);
     --_button-text-hsl: var(--_button-hsl);
     --_button-color: hsla(var(--_button-hsl), 1);
     --_button-text-color: hsla(var(--_button-text-hsl), 1);
-    --_button-padding-block: var(--base-padding-block);
-    --_button-padding-inline: var(--base-padding-inline);
+    --_button-padding-block: var(--button-padding-block);
+    --_button-padding-inline: var(--button-padding-inline);
 
     /* Optional Values */
     --_button-border-radius: var(--base-border-radius, 0); /* Fallback to 0 */
@@ -233,22 +233,22 @@
 
   .button[data-size="s"],
   .button[size="s"] {
-    --_button-padding-block: var(--s-2);
-    --_button-padding-inline: var(--s0);
-    --_button-font-size: 75%;
+    --_button-padding-block: var(--space-xs);
+    --_button-padding-inline: var(--space-s);
+    --_button-font-size: 85%;
   }
 
   .button[data-size="l"],
   .button[size="l"] {
-    --_button-padding-block: var(--s0);
-    --_button-padding-inline: var(--s2);
+    --_button-padding-block: var(--space-s);
+    --_button-padding-inline: var(--space-m);
     --_button-font-size: 120%;
   }
 
   .button[data-size="xl"],
   .button[size="xl"] {
-    --_button-padding-block: var(--s0);
-    --_button-padding-inline: var(--s2);
+    --_button-padding-block: var(--size-0);
+    --_button-padding-inline: var(--size-2);
     --_button-font-size: 150%;
   }
 
