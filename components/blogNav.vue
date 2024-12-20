@@ -11,13 +11,7 @@
         visual="unstyled"></base-button>
 
       <nav class="cluster">
-        <nuxt-link class="button" visual="unstyled" to="/updates"
-          >Blog</nuxt-link
-        >
-        <a class="button" visual="unstyled" href="#">About</a>
-        <a class="button" visual="unstyled" href="#">Events</a>
-        <a class="button" visual="unstyled" href="#">Our Work</a>
-        <a class="button" visual="unstyled" href="#">Contact</a>
+        <nuxt-link class="button" visual="unstyled" v-for="route in routes" :key="route.path" :to="route.path">{{ route.name || route.path }}</nuxt-link>
         <a class="button" visual="primary" color="accent" href="#">Signup</a>
       </nav>
 
@@ -26,7 +20,14 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const routes = router.getRoutes().filter(route => route.path.split('/').length === 2);
+
+console.log('Available First Level Routes:', routes);
+</script>
 
 <style lang="scss" scoped>
   // Structure
@@ -65,6 +66,10 @@
 
     * {
       color: inherit;
+    }
+
+    .button {
+      text-transform: capitalize;
     }
   }
 </style>
