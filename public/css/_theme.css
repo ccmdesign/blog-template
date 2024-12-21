@@ -44,6 +44,7 @@
   --nav-padding-block: var(--space-2xs);
   --nav-color: var(--base-color-100);
   --nav-background-color: var(--base-color);
+  --nav-mobile-background-color: var(--primary-color);
 
   
   --card-padding-block: var(--space-s-m);
