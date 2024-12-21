@@ -34,8 +34,17 @@
   --base-grid-width: 480px;
   --base-padding-block: var(--space-xs);
   --base-padding-inline: var(--space-2xs);
+  --base-gutter: var(--space-s-m);
+  --base-border-radius: 4px;
+
+  --stack-space: var(--space-xs-s);
 
   --section-padding-block: var(--space-l-xl);
+  
+  --nav-padding-block: var(--space-2xs);
+  --nav-color: var(--base-color-100);
+  --nav-background-color: var(--base-color);
+
   
   --card-padding-block: var(--space-s-m);
   --card-padding-inline: var(--space-m-l);
@@ -43,9 +52,11 @@
   --button-padding-block: var(--space-2xs);
   --button-padding-inline: var(--space-s);
 
-  --base-gutter: var(--space-s-m);
-  --stack-space: var(--space-xs-s);
-  --base-border-radius: 4px;
+  --search-background-color: var(--base-color-800);
+  --search-padding-inline: var(--space-xs);
+  --search-focus-background-color: var(--base-color-700);
+
+  
 
   --shadow-color: 0deg, 0%, 0%;
   

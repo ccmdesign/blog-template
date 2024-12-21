@@ -30,6 +30,13 @@ console.log('Available First Level Routes:', routes);
 </script>
 
 <style lang="scss" scoped>
+  .blog-nav {
+    --_nav-color: var(--nav-color);
+    --_nav-background-color: var(--nav-background-color);
+    --_nav-padding-block: var(--nav-padding-block);
+  }
+
+
   // Structure
   .blog-nav__content {
     display: flex;
@@ -38,38 +45,27 @@ console.log('Available First Level Routes:', routes);
     margin-inline: var(--base-padding-inline);
   }
 
+  .blog-nav {
+    * { color: inherit; }
+    .button { text-transform: capitalize; }
+  }
+
   @media screen and (max-width: 600px) {
-    .blog-nav {
-      flex-direction: column;
-    }
+    .blog-nav { flex-direction: column; }
 
     .cluster,
-    .blog-nav__search {
-      display: none;
-    }
+    .blog-nav__search { display: none; }
   }
 
   @media screen and (min-width: 600px) {
-    .blog-nav {
-      justify-content: space-between;
-    }
-
-    .blog-nav__menu-trigger {
-      display: none;
-    }
+    .blog-nav { justify-content: space-between; }
+    .blog-nav__menu-trigger { display: none; }
   }
 
   // Style
   .blog-nav {
-    color: var(--white-color);
-    background-color: var(--base-color);
-
-    * {
-      color: inherit;
-    }
-
-    .button {
-      text-transform: capitalize;
-    }
+    padding-block: var(--_nav-padding-block);
+    color: var(--_nav-color);
+    background-color: var(--_nav-background-color);
   }
 </style>
