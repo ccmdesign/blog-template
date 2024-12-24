@@ -1,0 +1,15 @@
+{
+  "title": "Blog Template",
+  "description": "Project Tagline",
+  "url": "",
+  "image": "",
+
+  "gtm": "GTM-XXXXXXX",
+  "gtag": "G-XXXXXXXXXX",
+  
+  "client": "",
+  "license_name": "MIT",
+  "license_url": "https://opensource.org/licenses/MIT",
+  "aboutFooter": ""
+}
+
