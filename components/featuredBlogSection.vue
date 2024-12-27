@@ -1,25 +1,113 @@
 <template>
   <section class="featured-posts" :layout="layout">
     <ul class="reel overflowing" role="list">
-      <slot />
+      <blog-card v-for="card in items" v-bind:key="card" :content="card"></blog-card>
+    </ul>
+    <ul class="reel-markers">
+      <li class="reel-markers__marker" :class="{}" v-for="(marker, i) in items" v-bind:key="marker" aria-hidden="true">
+        <button class="reel-markers__button" @click="goTo(i)" :class="{'reel-markers__button--active': data.currentPosition == i}"></button>
+      </li>
     </ul>
   </section>
 </template>
 
 <script setup>
+  import { watch } from 'vue';
+
   defineProps({
     layout: {
       type: String,
       default: "default",
     },
+    items: {
+      type: Array,
+      default: [
+        {
+          brow: "",
+          title: "",
+          actionLabel: "Read more",
+          tags: [],
+          url: "",
+        },
+        {
+          brow: "",
+          title: "",
+          actionLabel: "Read more",
+          tags: [],
+          url: "",
+        },
+        {
+          brow: "",
+          title: "",
+          actionLabel: "Read more",
+          tags: [],
+          url: "",
+        },
+        {
+          brow: "",
+          title: "",
+          actionLabel: "Read more",
+          tags: [],
+          url: "",
+        },
+        {
+          brow: "",
+          title: "",
+          actionLabel: "Read more",
+          tags: [],
+          url: "",
+        },
+        {
+          brow: "",
+          title: "",
+          actionLabel: "Read more",
+          tags: [],
+          url: "",
+        },
+      ]
+    }
+  });
+
+  const data = reactive({
+    currentPosition: 0,
+
+  })
+
+  const goTo = (pos) => {
+    if (data.currentPosition != pos) {
+      data.currentPosition = pos;
+    }
+  }
+
+  const scrollIntoPosition = (pos) => {
+    const reel = document.querySelector('.reel');
+    if (reel) {
+      const children = reel.children;
+      if (pos >= 0 && pos < children.length) {
+        const targetElement = children[pos];
+        reel.scrollTo({
+          left: targetElement.offsetLeft,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+
+  watch(() => data.currentPosition, (newPos) => {
+    scrollIntoPosition(newPos);
   });
 </script>
 
 <style lang="scss" scoped>
   section {
-    // --_featured-posts-bg: var(--base-color);
+    --_featured-posts-bg: transparent;
     --_featured-posts-color: var(--base-color);
     --_featured-posts-padding: var(--section-padding-block);
+    --_featured-posts-snap-align: start; 
+    --_featured-posts-marker-justify: center;
+    --_featured-posts-marker-color: var(--base-color-25-alpha);
+    --_featured-posts-marker-size: var(--size--2);
+    --_featured-posts-marker-radius: var(--size--1);
   }
 
   section {
@@ -33,6 +121,11 @@
 
     color: var(--_featured-posts-color);
   }
+
+.featured-posts {
+  overflow-x: hidden;
+  width: 100%;
+}
 
   .featured-posts[layout="reel"] {
     padding-bottom: var(--_featured-posts-padding);
@@ -62,9 +155,51 @@
     margin: 0;
   }
 
+  .reel {
+    scroll-snap-type: x mandatory;
+    overflow-x: hidden;
+    @media screen and (max-width: 768px) {
+      overflow-x: auto;
+    }
+  }
+
   // This controls the width of the reel card
   .reel > :deep(*) {
     width: 100%;
     max-width: 600px;
+    scroll-snap-align: var(--_featured-posts-snap-align);
   }
+
+  .reel-markers {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: var(--size-0);
+    justify-content: var(--_featured-posts-marker-justify);
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+    .reel-markers__marker {
+      list-style: none;
+    }
+
+      .reel-markers__button {
+        height: var(--_featured-posts-marker-size);
+        width: var(--_featured-posts-marker-size);
+        border: none;
+        border-radius: var(--_featured-posts-marker-radius);
+        background-color: var(--_featured-posts-marker-color);
+        cursor: pointer;
+        transition: width 0.2s ease-in-out;
+        outline: none;
+      }
+
+      .reel-markers__button--active {
+        width: calc(var(--_featured-posts-marker-size) * 3);
+        cursor: default;
+        pointer-events: none;
+      }
 </style>

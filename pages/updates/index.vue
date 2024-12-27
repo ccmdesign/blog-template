@@ -1,7 +1,7 @@
 <template>
   <main>
     <blog-hero :content="data.featuredItems.slice(0, 4)" />
-    <blog-partners />
+    <blog-partners v-if="false" />
     <blog-post-list :content="data.items" />
   </main>
 </template>

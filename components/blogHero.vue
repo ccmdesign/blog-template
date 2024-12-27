@@ -9,6 +9,7 @@
     <div class="hero__middle" v-if="!mini">
       <slot>
         <blog-headings />
+        <featured-blog-section></featured-blog-section>
       </slot>
     </div>
 
@@ -37,6 +38,7 @@
     --_hero-bg-color: var(--base-color);
     --_hero-color: var(--white-color);
     --_hero-min-height: v-bind(minHeight);
+    --_hero-middle-gap: var(--space-3xl);
   }
 
   .hero:deep(*) {
@@ -68,6 +70,9 @@
     grid-area: middle;
     display: flex;
     align-items: center;
+    flex-flow: column nowrap;
+    gap: var(--_hero-middle-gap);
+    overflow: hidden;
   }
 
   .hero__bottom {
