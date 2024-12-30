@@ -1,6 +1,8 @@
 <template>
   <main>
-    <blog-hero :content="data.featuredItems.slice(0, 4)" />
+    <blog-hero :content="data.featuredItems.slice(0, 4)">
+      <featured-blog-section :loop="true"></featured-blog-section>
+    </blog-hero>
     <blog-partners v-if="false" />
     <blog-post-list :content="data.items" />
   </main>
@@ -22,8 +24,6 @@
     ],
   });
   const blog = await queryContent("blogposts").sort({ date: -1 }).find();
-
-  console.log(34, blog);
 
   const months = [
     "Jan",

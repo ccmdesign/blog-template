@@ -9,7 +9,6 @@
     <div class="hero__middle" v-if="!mini">
       <slot>
         <blog-headings />
-        <featured-blog-section></featured-blog-section>
       </slot>
     </div>
 

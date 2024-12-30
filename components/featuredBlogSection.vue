@@ -12,12 +12,20 @@
 </template>
 
 <script setup>
-  import { watch } from 'vue';
+  import { watch, onMounted, onUnmounted, ref } from 'vue';
 
-  defineProps({
+  const props = defineProps({
     layout: {
       type: String,
       default: "default",
+    },
+    loop: {
+      type: Boolean,
+      default: false,
+    },
+    loopInterval: {
+      type: String,
+      default: '3000',
     },
     items: {
       type: Array,
@@ -70,14 +78,13 @@
 
   const data = reactive({
     currentPosition: 0,
-
-  })
+  });
 
   const goTo = (pos) => {
     if (data.currentPosition != pos) {
       data.currentPosition = pos;
     }
-  }
+  };
 
   const scrollIntoPosition = (pos) => {
     const reel = document.querySelector('.reel');
@@ -91,10 +98,45 @@
         });
       }
     }
-  }
+  };
 
   watch(() => data.currentPosition, (newPos) => {
     scrollIntoPosition(newPos);
+  });
+
+  // Função para avançar para o próximo item
+  const next = () => {
+    data.currentPosition = (data.currentPosition + 1) % props.items.length;
+  };
+
+  // Função para voltar para o item anterior
+  const previous = () => {
+    data.currentPosition = (data.currentPosition - 1 + props.items.length) % props.items.length;
+  };
+
+  const intervalId = ref(null);
+
+  const startLoop = () => {
+    if (props.loop) {
+      window.setInterval(() => {
+        next();
+      }, parseInt(props.loopInterval));
+    }
+  };
+
+  const stopLoop = () => {
+    if (intervalId.value) {
+      clearInterval(intervalId.value);
+      intervalId.value = null;
+    }
+  };
+
+  onMounted(() => {
+    startLoop();
+  });
+
+  onUnmounted(() => {
+    stopLoop();
   });
 </script>
 
