@@ -4,7 +4,7 @@
       <featured-blog-section :loop="true" :items="data.featuredItems.slice(0, 4)"></featured-blog-section>
     </blog-hero>
     <blog-partners :logos="projectConfig.project_partners" />
-    <blog-post-list :content="data.items" />
+    <blog-post-list :content="data.items" class="margin-bottom:xl-2xl"/>
   </main>
 </template>
 
