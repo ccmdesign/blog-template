@@ -1,6 +1,6 @@
 <template>
   <main>
-    <blog-hero >
+    <blog-hero min-height="800px">
       <featured-blog-section :loop="true" :items="data.featuredItems.slice(0, 4)"></featured-blog-section>
     </blog-hero>
     <blog-partners v-if="false" />
