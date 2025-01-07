@@ -12,6 +12,14 @@
   "license_name": "MIT",
   "license_url": "https://opensource.org/licenses/MIT",
 
+  "main_menu": [
+    { "name": "About", "path": "/about" },
+    { "name": "Events", "path": "/events" },
+    { "name": "Our Work", "path": "/our-work" },
+    { "name": "Updates", "path": "/updates" },
+    { "name": "Contact", "path": "/contact" }
+  ],
+
   "project_partners": [
     { 
       "src_light": "/images/govlab-logo-light.svg", 

@@ -31,13 +31,14 @@
 }
 
 :root {
-  --base-grid-width: 480px;
+  --theme-center-measure: 1500px;
+  --theme-stack-space: var(--space-xs-s);
+  
+  --base-grid-width: 390px;
   --base-padding-block: var(--space-xs);
   --base-padding-inline: var(--space-2xs);
   --base-gutter: var(--space-s-m);
   --base-border-radius: 4px;
-
-  --stack-space: var(--space-xs-s);
 
   --section-padding-block: var(--space-l-xl);
   
@@ -57,7 +58,7 @@
   --search-padding-inline: var(--space-xs);
   --search-focus-background-color: var(--base-color-700);
 
-  --theme-center-measure: 1100px;
+  
   /* --partners-image-width: 200px;
   --partners-image-height: 44px; */
 
