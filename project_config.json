@@ -10,6 +10,25 @@
   "client": "",
   "license_name": "MIT",
   "license_url": "https://opensource.org/licenses/MIT",
-  "aboutFooter": ""
+  
+  "about_footer": "",
+
+  "project_partners": [
+    { 
+      "src": "/images/govlab-logo.svg", 
+      "alt": "GovLab",
+      "maxWidth": "200px"
+    },
+    { 
+      "src": "/images/burnes-center-logo.svg", 
+      "alt": "Burnes Center for Social Change",
+      "maxWidth": "200px"
+    },
+    { 
+      "src": "/images/northeastern-university.svg", 
+      "alt": "Northwestern University",
+      "maxWidth": "200px"
+    }
+  ]
 }
 
