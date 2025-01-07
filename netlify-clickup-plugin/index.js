@@ -11,7 +11,8 @@ module.exports = {
         }
 
         const message = {
-            message: `🚨 **Deploy falhou no site ${constants.SITE_NAME}**\n\nErro: ${error.message}`,
+            comment_text: `🚨 **Deploy falhou no site ${constants.SITE_NAME}**\n\nErro: ${error.message}`,
+            notify_all: true
         };
 
         const url = `https://api.clickup.com/api/v2/view/${chatViewId}/comment`;
