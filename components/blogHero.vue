@@ -29,12 +29,14 @@
       default: "80svh",
     },
   });
+
+  
 </script>
 
 <style lang="scss" scoped>
   .hero {
     --_hero-bg-fancy: var(--gradient);
-    --_hero-bg-color: var(--base-color);
+    --_hero-bg-color: var(--primary-color);
     --_hero-color: var(--white-color);
     --_hero-min-height: v-bind(minHeight);
     --_hero-middle-gap: var(--space-3xl);
@@ -72,6 +74,7 @@
     flex-flow: column nowrap;
     gap: var(--_hero-middle-gap);
     overflow: hidden;
+    justify-content: end;
   }
 
   .hero__bottom {
