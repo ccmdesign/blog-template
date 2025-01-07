@@ -57,6 +57,7 @@
   --search-padding-inline: var(--space-xs);
   --search-focus-background-color: var(--base-color-700);
 
+  --theme-center-measure: 1100px;
   /* --partners-image-width: 200px;
   --partners-image-height: 44px; */
 
