@@ -1,31 +1,35 @@
 {
-  "title": "Blog Template",
-  "description": "Project Tagline",
+  "title": "Reboot Democracy",
+  "description": "Advancing collective intelligence with artificial intelligence",
   "url": "",
   "image": "",
+  "project_logo": "/images/reboot-democracy-logo.svg",
 
   "gtm": "GTM-XXXXXXX",
   "gtag": "G-XXXXXXXXXX",
   
-  "client": "",
+  "client": "Burnes Center for Social Change",
   "license_name": "MIT",
   "license_url": "https://opensource.org/licenses/MIT",
   
-  "about_footer": "",
+  "about_footer": "We use artificial intelligence to empower institutions and communities to collaboratively solve problems, believing it can strengthen participatory democracy. By fostering meaningful engagement, we aim to achieve better governance, improved outcomes, and increased trust in institutions and one another. As researchers, we are dedicated to exploring how democracy can be effectively practiced and reimagined at scale, emboldened by the transformative possibilities of generative AI.",
 
   "project_partners": [
     { 
-      "src": "/images/govlab-logo.svg", 
+      "src_light": "/images/govlab-logo-light.svg", 
+      "src_dark": "/images/govlab-logo-dark.svg", 
       "alt": "GovLab",
       "maxWidth": "200px"
     },
     { 
-      "src": "/images/burnes-center-logo.svg", 
+      "src_light": "/images/burnes-center-logo-light.svg", 
+      "src_dark": "/images/burnes-center-logo-dark.svg", 
       "alt": "Burnes Center for Social Change",
       "maxWidth": "200px"
     },
     { 
-      "src": "/images/northeastern-university.svg", 
+      "src_light": "/images/northeastern-university-light.svg", 
+      "src_dark": "/images/northeastern-university-dark.svg", 
       "alt": "Northwestern University",
       "maxWidth": "200px"
     }

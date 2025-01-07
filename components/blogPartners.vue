@@ -1,9 +1,15 @@
 <template>
-  <blog-section>
+  <blog-section :theme="theme">
     <div class="center">
       <div class="cluster partners-cluster">
         <h4 class="partners-title" split>Partners</h4>
-        <img v-for="logo in logos" :key="logo.src" :src="logo.src" :alt="logo.alt" :style="{ '--_partners-image-width': logo.maxWidth }" />
+        <img 
+          v-for="logo in logos" 
+          :key="logo.src" 
+          :src="theme === 'dark' ? logo.src_dark : logo.src_light" 
+          :alt="logo.alt" 
+          :style="{ '--_partners-image-width': logo.maxWidth }" 
+        />
       </div>
     </div>
   </blog-section>
@@ -13,6 +19,10 @@
   const props = defineProps({
     logos: {
       type: Array
+    },
+    theme: {
+      type: String,
+      default: "light"
     }});
 </script>
 
