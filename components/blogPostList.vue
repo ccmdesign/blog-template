@@ -1,8 +1,15 @@
 <template>
   <section class="blog-post-list | base-section" :content="content">
     <slot>
-      <div class="grid">
-        <blog-card :content="item" v-for="item in content" :key="item.slug" />
+      <div class="center stack">
+        
+        <div class="grid">
+          <blog-card :content="item" v-for="item in content" :key="item.slug" />
+        </div>
+        
+        <div class="text-align:center">
+          <nuxt-link class="button">More Posts</nuxt-link>
+        </div>
       </div>
     </slot>
   </section>
@@ -30,4 +37,6 @@ defineProps({
     padding-block: var(--_section-padding);
     padding-inline: var(--base-padding-inline);
   }
+
+
 </style>
