@@ -14,7 +14,7 @@ module.exports = {
             message: `🚨 **Deploy falhou no site ${constants.SITE_NAME}**\n\nErro: ${error.message}`,
         };
 
-        const url = `https://api.clickup.com/api/v2/view/${chatViewId}/message`;
+        const url = `https://api.clickup.com/api/v2/view/${chatViewId}/comment`;
 
         await axios.post(url, message, {
             headers: {

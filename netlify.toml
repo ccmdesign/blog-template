@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build" # Ajuste conforme seu comando de build
+  command = "npm run build"
 
 [[plugins]]
-  package = "./netlify-clickup-plugin" # Caminho relativo ao plugin
+  package = "./netlify-clickup-plugin"
