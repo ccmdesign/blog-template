@@ -74,7 +74,7 @@ const routes = computed(() => {
 
     @media screen and (min-width: 800px) {
       display: grid;
-      grid-template-columns: minmax(200px, 300px) minmax(300px, 800px) minmax(200px, 250px);  
+      grid-template-columns: minmax(150px, 300px) minmax(300px, 800px) minmax(150px, 300px);  
     }
   }
 
@@ -92,7 +92,7 @@ const routes = computed(() => {
 
   .footer__logos {
     * { --_stack-space: var(--space-l); }
-    
+    img { width: 100%; }
   } 
   
   .footer__links {
