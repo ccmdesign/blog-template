@@ -11,13 +11,12 @@
   "client": "Burnes Center for Social Change",
   "license_name": "MIT",
   "license_url": "https://opensource.org/licenses/MIT",
-  
-  "about_footer": "We use artificial intelligence to empower institutions and communities to collaboratively solve problems, believing it can strengthen participatory democracy. By fostering meaningful engagement, we aim to achieve better governance, improved outcomes, and increased trust in institutions and one another. As researchers, we are dedicated to exploring how democracy can be effectively practiced and reimagined at scale, emboldened by the transformative possibilities of generative AI.",
 
   "project_partners": [
     { 
       "src_light": "/images/govlab-logo-light.svg", 
-      "src_dark": "/images/govlab-logo-dark.svg", 
+      "src_dark": "/images/govlab-logo-dark.svg",
+      "url": "https://thegovlab.org/",
       "alt": "GovLab",
       "maxWidth": "200px"
     },
@@ -25,14 +24,26 @@
       "src_light": "/images/burnes-center-logo-light.svg", 
       "src_dark": "/images/burnes-center-logo-dark.svg", 
       "alt": "Burnes Center for Social Change",
+      "url": "https://www.northeastern.edu/csshresearch/burnes-center/",
       "maxWidth": "200px"
     },
     { 
       "src_light": "/images/northeastern-university-light.svg", 
       "src_dark": "/images/northeastern-university-dark.svg", 
       "alt": "Northwestern University",
+      "url": "https://www.northeastern.edu/",
       "maxWidth": "200px"
     }
-  ]
+  ],
+
+  "footer": {
+    "about": "We use artificial intelligence to empower institutions and communities to collaboratively solve problems, believing it can strengthen participatory democracy. By fostering meaningful engagement, we aim to achieve better governance, improved outcomes, and increased trust in institutions and one another. As researchers, we are dedicated to exploring how democracy can be effectively practiced and reimagined at scale, emboldened by the transformative possibilities of generative AI.",
+    "links": [
+      { "name": "About", "path": "/about" },
+      { "name": "Contact", "path": "/contact" },
+      { "name": "Privacy Policy", "path": "/privacy-policy" },
+      { "name": "Terms of Service", "path": "/terms-of-service" }
+    ]
+  }
 }
 

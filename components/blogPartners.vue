@@ -3,13 +3,19 @@
     <div class="center">
       <div class="cluster partners-cluster">
         <h4 class="partners-title" split>Partners</h4>
-        <img 
+        <a 
           v-for="logo in logos" 
           :key="logo.src" 
-          :src="theme === 'dark' ? logo.src_dark : logo.src_light" 
-          :alt="logo.alt" 
-          :style="{ '--_partners-image-width': logo.maxWidth }" 
-        />
+          :href="logo.url" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          <img 
+            :src="theme === 'dark' ? logo.src_dark : logo.src_light" 
+            :alt="logo.alt" 
+            :style="{ '--_partners-image-width': logo.maxWidth }" 
+          />
+        </a>
       </div>
     </div>
   </blog-section>
