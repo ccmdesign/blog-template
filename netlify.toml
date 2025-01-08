@@ -1,5 +1,8 @@
 [build]
   command = "npm run build"
 
+[build.environment]
+  SITE_NAME = "burnes-blog-template"
+
 [[plugins]]
   package = "./netlify-clickup-plugin"

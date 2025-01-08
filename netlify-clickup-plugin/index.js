@@ -4,14 +4,15 @@ module.exports = {
   onError: async ({ error, constants, utils }) => {
     try {
         const clickUpToken = process.env.CLICKUP_API_TOKEN; 
-        const chatViewId = process.env.CLICKUP_CHAT_VIEW_ID; 
+        const chatViewId = process.env.CLICKUP_CHAT_VIEW_ID;
+        const siteName = process.env.SITE_NAME || constants.SITE_NAME || "Nome do site desconhecido";
 
         if (!clickUpToken || !chatViewId) {
             utils.build.failPlugin("CLICKUP_API_TOKEN ou CLICKUP_CHAT_VIEW_ID não configurados!");
         }
 
         const message = {
-            comment_text: `🚨 **Deploy falhou no site ${constants.SITE_NAME}**\n\nErro: ${error.message}`,
+            comment_text: `🚨 **Deploy falhou no site ${siteName}**\n\nErro: ${error.message}`,
             notify_all: true
         };
 
