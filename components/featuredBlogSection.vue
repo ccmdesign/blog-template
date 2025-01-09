@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-  import { watch, onMounted, onUnmounted, ref } from 'vue';
+  import { watch, onMounted, onUnmounted, ref, reactive } from 'vue';
 
   const props = defineProps({
     layout: {
@@ -80,6 +80,8 @@
     currentPosition: 0,
   });
 
+  const isScrollingProgrammatically = ref(false);
+
   const goTo = (pos) => {
     if (data.currentPosition != pos) {
       data.currentPosition = pos;
@@ -92,10 +94,33 @@
       const children = reel.children;
       if (pos >= 0 && pos < children.length) {
         const targetElement = children[pos];
+        isScrollingProgrammatically.value = true;
         reel.scrollTo({
           left: targetElement.offsetLeft,
           behavior: 'smooth'
         });
+        setTimeout(() => {
+          isScrollingProgrammatically.value = false;
+        }, 300); // Ajuste o tempo conforme necessário
+      }
+    }
+  };
+
+  const updateCurrentPosition = () => {
+    if (isScrollingProgrammatically.value) return;
+
+    const reel = document.querySelector('.reel');
+    if (reel) {
+      const children = Array.from(reel.children);
+      const scrollLeft = reel.scrollLeft;
+      const childWidth = children[0].offsetWidth;
+
+      // Calcula a posição atual com base na rolagem
+      const newPosition = Math.round(scrollLeft / childWidth);
+      if (Math.abs(scrollLeft - newPosition * childWidth) < childWidth / 2) {
+        if (newPosition !== data.currentPosition) {
+          data.currentPosition = newPosition;
+        }
       }
     }
   };
@@ -132,10 +157,18 @@
   };
 
   onMounted(() => {
+    const reel = document.querySelector('.reel');
+    if (reel) {
+      reel.addEventListener('scroll', updateCurrentPosition);
+    }
     startLoop();
   });
 
   onUnmounted(() => {
+    const reel = document.querySelector('.reel');
+    if (reel) {
+      reel.removeEventListener('scroll', updateCurrentPosition);
+    }
     stopLoop();
   });
 </script>
@@ -145,6 +178,7 @@
     --_featured-posts-bg: transparent;
     --_featured-posts-color: var(--base-color);
     --_featured-posts-padding: var(--section-padding-block);
+    --_featured-posts-padding-left: var(--size-2);
     --_featured-posts-snap-align: start; 
     --_featured-posts-marker-justify: center;
     --_featured-posts-marker-color: var(--base-color-25-alpha);
@@ -171,6 +205,9 @@
 
   .featured-posts[layout="reel"] {
     padding-bottom: var(--_featured-posts-padding);
+    .reel > :first-child{
+      margin-left: var(--_featured-posts-padding-left);
+    }
   }
 
   @media screen and (max-width: 768px) {
@@ -199,7 +236,11 @@
 
   .reel {
     scroll-snap-type: x mandatory;
-    overflow-x: hidden;
+    overflow-x: auto; // Permite a rolagem
+    scrollbar-width: none; // Firefox
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari e Edge
+    }
     @media screen and (max-width: 768px) {
       overflow-x: auto;
     }

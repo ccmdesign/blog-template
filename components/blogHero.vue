@@ -7,8 +7,10 @@
     </div>
 
     <div class="hero__middle" v-if="!mini">
+      <div class="hero__title">
+        <blog-headings :horizontal="horizontal" :title="title" :tagline="tagline" :brow="brow" />
+      </div>
       <slot>
-        <blog-headings />
       </slot>
     </div>
 
@@ -28,6 +30,22 @@
       type: String,
       default: "80svh",
     },
+    brow: {
+      type: String,
+      default: "",
+    },
+    title: {
+      type: String,
+      default: "",
+    },
+    tagline: {
+      type: String,
+      default: "",
+    },
+    horizontal: {
+      type: Boolean,
+      default: false,
+    },
   });
 
   
@@ -40,6 +58,7 @@
     --_hero-color: var(--white-color);
     --_hero-min-height: v-bind(minHeight);
     --_hero-middle-gap: var(--space-3xl);
+    --_hero-middle-padding: var(--space-2xl);
   }
 
   .hero:deep(*) {
@@ -68,6 +87,7 @@
   }
 
   .hero__middle {
+    padding-top: var(--_hero-middle-padding);
     grid-area: middle;
     display: flex;
     align-items: center;
@@ -76,6 +96,18 @@
     overflow: hidden;
     justify-content: end;
   }
+    .hero__title {
+      width: 100%;
+      :deep(.headings){
+          --_headings-title-font-size: var(--size-4);
+          --_headings-title-font-weight: 400;
+          --_headings-title-color: var(--white-color);
+          --_headings-tagline-font-family: var(--display-font);
+
+          --_headings-tagline-font-size: var(--size-1);
+          --_headings-tagline-color: var(--white-color);
+      }
+    }
 
   .hero__bottom {
     grid-area: bottom;

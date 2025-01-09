@@ -1,23 +1,15 @@
 <template>
-  <blog-header />
   <main>
-    <featured-blog-section>
-      <blog-card v-for="item in data.featuredItems" :key="`featured-${item.slug}`" :content="item" />
-    </featured-blog-section>
-    <blog-section>
-      <div class="center">
-        <h2>All posts</h2>
-        <ul class="grid" role="list">
-          <blog-card v-for="item in data.items" v-bind:key="item.slug" :content="item" />
-        </ul>
-      </div>
-    </blog-section>
-    
+    <blog-hero title="Updates" >
+      <featured-blog-section :loop="true" layout="reel" :items="data.featuredItems.slice(0, 4)"></featured-blog-section>
+    </blog-hero>
+    <blog-partners :logos="projectConfig.project_partners" />
+    <blog-post-list :content="data.items" class="margin-bottom:xl-2xl"/>
   </main>
-  <blog-footer />
 </template>
 
 <script setup>
+  import projectConfig from '../../project_config.json';
   useHead({
       title: 'Blog Template',
       meta: [
@@ -35,8 +27,10 @@
 
 const route = useRoute()
 const blog = await queryContent('blogposts').where({ 'array_of_tag_slug': {
-  $contains: route.params.tag
-} }).find()
+  $contains: route.params.slug
+} }).sort({ date: -1 }).find()
+
+
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -79,5 +73,7 @@ blog.forEach(post => {
 </script>
 
 <style scoped lang="scss">
-
+  .grid {
+    --base-grid-width: 300px;
+  }
 </style>
