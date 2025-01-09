@@ -1,10 +1,10 @@
 <template>
-  <hgroup class="headings | center" :brow="brow" :title="title" :tagline="tagline" :clip="clip" >
+  <hgroup class="headings | center" :class="{'headings--horizontal': horizontal && tagline}" :brow="brow" :title="title" :tagline="tagline" :clip="clip" >
     <div class="stack">
       <slot>
-        <h3 v-if="brow">{{ brow }}</h3>
-        <h1 v-if="title">{{ title }}</h1>
-        <h4 v-if="tagline">{{ tagline }}</h4>
+        <h3 v-if="brow" class="headings__brow">{{ brow }}</h3>
+        <h1 v-if="title" class="headings__title">{{ title }}</h1>
+        <h4 v-if="tagline" class="headings__tagline">{{ tagline }}</h4>
       </slot>
     </div>
   </hgroup>
@@ -14,25 +14,29 @@
   defineProps({
     brow: {
       type: String,
-      default: "Default Brow",
+      default: "",
     },
     title: {
       type: String,
-      default: "Default Title",
+      default: "",
     },
     tagline: {
       type: String,
-      default: "Default Tagline",
+      default: "",
     },
     clip: {
       type: String,
       default: "",
     },
+    horizontal: {
+      type: Boolean,
+      default: false,
+    },
   });
 </script>
 
 <style>
-[container="blog-headigns"] {
+[container="blog-headings"] {
   container-type: inline-size;
   container-name: blog-headings-container;
 }
@@ -66,6 +70,8 @@
     --_headings-tagline-background: transparent;
     --_headings-tagline-line-height: 1.5;
     --_headings-tagline-text-transform: none;
+    
+    --_headings-gap: var(--size-4);
   }
   
   @container (min-width: 700px) {
@@ -110,6 +116,30 @@
 
     .stack {
       --_stack-space: var(--space-2xs);
+    }
+  }
+  
+  @media (min-width: 700px) {
+    .stack {
+      align-items: flex-start;
+    }
+
+    .headings--horizontal {
+      .stack {
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        gap: var(--_headings-gap);
+        align-items: flex-start;
+        & > * {
+          width: calc(50% - calc(var(--_headings-gap) / 2));
+        }
+        & > * + * {
+          margin-block-start: 0;
+        }
+        .headings__tagline {
+          text-align: right;
+        }
+      }
     }
   }
 
