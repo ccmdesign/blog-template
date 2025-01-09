@@ -3,24 +3,26 @@
     <blog-hero >
       <featured-blog-section :loop="true" layout="reel" :items="data.featuredItems.slice(0, 4)"></featured-blog-section>
     </blog-hero>
-    <blog-partners v-if="false" />
-    <blog-post-list :content="data.items" />
+    <blog-partners :logos="projectConfig.project_partners" />
+    <blog-post-list :content="data.items" class="margin-bottom:xl-2xl"/>
   </main>
 </template>
 
 <script setup>
+  import projectConfig from '../../project_config.json';
+
   useHead({
     title: "Blog Template",
     meta: [
-      { name: "description", content: "Blog Template" },
-      { property: "og:site_name", content: "Blog Template" },
-      { property: "og:title", content: "Blog Template" },
-      { property: "og:description", content: "Blog Template" },
-      { property: "og:image", content: "/images/default.png" },
-      { property: "og:image:alt", content: "Blog Template" },
-      { name: "twitter:image", content: "/images/default.png" },
-      { name: "twitter:image:alt", content: "Blog Template" },
-      { name: "twitter:description", content: "Blog Template" },
+      { name: "description", content: projectConfig.description },
+      { property: "og:site_name", content: projectConfig.title },
+      { property: "og:title", content: projectConfig.title },
+      { property: "og:description", content: projectConfig.description },
+      { property: "og:image", content: projectConfig.image || "/images/default.png" },
+      { property: "og:image:alt", content: projectConfig.title },
+      { name: "twitter:image", content: projectConfig.image || "/images/default.png" },
+      { name: "twitter:image:alt", content: projectConfig.title },
+      { name: "twitter:description", content: projectConfig.description },
     ],
   });
   const blog = await queryContent("blogposts").sort({ date: -1 }).find();

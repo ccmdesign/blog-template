@@ -14,21 +14,55 @@
         visual="unstyled"></base-button>
 
       <nav class="cluster">
-        <nuxt-link class="button" visual="unstyled" v-for="route in routes" :key="route.path" :to="route.path">{{ route.name || route.path }}</nuxt-link>
+        <template v-for="route in routes" :key="route.path || route.url">
+          <nuxt-link 
+            v-if="route.path" 
+            class="button" 
+            :visual="route.visual || 'unstyled'" 
+            :color="route.color || 'default'" 
+            :to="route.path">
+            {{ route.name || route.path }}
+          </nuxt-link>
+          <a 
+            v-else-if="route.url" 
+            class="button" 
+            :visual="route.visual || 'unstyled'" 
+            :color="route.color || 'default'" 
+            :href="route.url" 
+            target="_blank">
+            {{ route.name || route.url }}
+          </a>
+        </template>
         
         <slot name="menu-extra">
-          <a class="button" visual="primary" color="accent" href="#">Signup</a>
+          <a class="button" visual="primary" color="primary" href="#">Signup</a>
         </slot>
       </nav>
 
       <div popover id="menu-mobile" class="menu-mobile">
         <nav class="stack">
-          <nuxt-link class="button" visual="unstyled" v-for="route in routes" :key="route.path" :to="route.path">{{ route.name || route.path }}</nuxt-link>
-          
+          <template v-for="route in routes" :key="route.path || route.url">
+            <nuxt-link 
+              v-if="route.path" 
+              class="button" 
+              :visual="route.visual || 'unstyled'" 
+              :color="route.color || ''" 
+              :to="route.path">
+              {{ route.name || route.path }}
+            </nuxt-link>
+            <a 
+              v-else-if="route.url" 
+              class="button" 
+              :visual="route.visual || 'unstyled'" 
+              :color="route.color || ''" 
+              :href="route.url" 
+              target="_blank">
+              {{ route.name || route.url }}
+            </a>
+          </template>
           
           <slot name="mobile-extra">
             <blog-search class="blog-nav__search" />  
-            <a class="button" visual="primary" color="accent" href="#">Signup</a>
           </slot>
         </nav>
       </div>
@@ -43,8 +77,12 @@
 <script setup>
 import { useRouter } from 'vue-router';
 
+import projectConfig from '../project_config.json';
+
 const router = useRouter();
-const routes = router.getRoutes().filter(route => route.path.split('/').length === 2);
+const routes = projectConfig.main_menu && Array.isArray(projectConfig.main_menu) && projectConfig.main_menu.length > 0
+  ? projectConfig.main_menu
+  : router.getRoutes().filter(route => route.path.split('/').length === 2);
 
 </script>
 

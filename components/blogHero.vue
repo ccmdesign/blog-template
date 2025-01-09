@@ -29,6 +29,8 @@
       default: "80svh",
     },
   });
+
+  
 </script>
 
 <style lang="scss" scoped>
@@ -72,6 +74,7 @@
     flex-flow: column nowrap;
     gap: var(--_hero-middle-gap);
     overflow: hidden;
+    justify-content: end;
   }
 
   .hero__bottom {
