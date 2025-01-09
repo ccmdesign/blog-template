@@ -1,7 +1,7 @@
 <template>
   <main>
     <blog-hero >
-      <featured-blog-section :loop="true" :items="data.featuredItems.slice(0, 4)"></featured-blog-section>
+      <featured-blog-section :loop="true" layout="reel" :items="data.featuredItems.slice(0, 4)"></featured-blog-section>
     </blog-hero>
     <blog-partners v-if="false" />
     <blog-post-list :content="data.items" />

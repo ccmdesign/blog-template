@@ -7,8 +7,8 @@
     </div>
 
     <div class="hero__middle" v-if="!mini">
+      <blog-headings />
       <slot>
-        <blog-headings />
       </slot>
     </div>
 
@@ -34,7 +34,7 @@
 <style lang="scss" scoped>
   .hero {
     --_hero-bg-fancy: var(--gradient);
-    --_hero-bg-color: var(--base-color);
+    --_hero-bg-color: var(--primary-color);
     --_hero-color: var(--white-color);
     --_hero-min-height: v-bind(minHeight);
     --_hero-middle-gap: var(--space-3xl);
