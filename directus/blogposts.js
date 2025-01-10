@@ -7,9 +7,10 @@ const objectContructor = async (dir, fs) => {
 
   // use this list to add fields from junction tables
   const junctionFields = [
+    "authors.team_id.*"
   ]
 
-  const items = await common.getDirectusData("reboot_democracy_blog");
+  const items = await common.getDirectusData("reboot_democracy_blog", junctionFields);
 
   await items.data.forEach((item) => {
     let i = {};
@@ -28,6 +29,21 @@ const objectContructor = async (dir, fs) => {
       tag_slug: common.slugify(tag),
       tag_label: tag
     })) : [];
+
+    // authors
+    i.authors = item.authors.length > 0 ? item.authors.map((author) => {
+      let person = author.team_id;
+      person.picture = person.Headshot ? common.getImage(person.Headshot) : '';
+
+      return {
+        name: person.First_Name,
+        lastName: person.Last_Name,
+        slug: common.slugify(person.First_Name),
+        picture: person.picture,
+        bioLink: person.Link_to_bio,
+        title: person.Title,
+      }
+    }) : []
 
     i.array_of_tag_slug = item.Tags ? item.Tags.map(item => common.slugify(item)) : [];
 
