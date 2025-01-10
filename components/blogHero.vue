@@ -7,8 +7,8 @@
     </div>
 
     <div class="hero__middle" v-if="!mini">
-      <div class="hero__title">
-        <blog-headings :horizontal="horizontal" :title="title" :tagline="tagline" :brow="brow" />
+      <div class="hero__title ">
+        <blog-headings class="center" :horizontal="horizontal" :title="title" :tagline="tagline" :brow="brow" />
       </div>
       <slot>
       </slot>

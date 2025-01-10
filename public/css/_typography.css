@@ -111,11 +111,12 @@ svg {
 /* Base interactive elements */
 
 a {
-  color: currentcolor;
+  color: var(--accent-color);
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 :focus {

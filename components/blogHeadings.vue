@@ -1,5 +1,5 @@
 <template>
-  <hgroup class="headings | center" :class="{'headings--horizontal': horizontal && tagline}" :brow="brow" :title="title" :tagline="tagline" :clip="clip" >
+  <hgroup class="headings" :class="{'headings--horizontal': horizontal && tagline}" :brow="brow" :title="title" :tagline="tagline" :clip="clip" >
     <div class="stack">
       <slot>
         <h3 v-if="brow" class="headings__brow">{{ brow }}</h3>
@@ -63,7 +63,7 @@
     --_headings-title-text-transform: none;
 
     --_headings-tagline-font-family: var(--body-font);
-    --_headings-tagline-font-size: var(--size--1);
+    --_headings-tagline-font-size: var(--size-0);
     --_headings-tagline-font-style: normal;
     --_headings-tagline-font-weight: 300;
     --_headings-tagline-color: var(--base-color-500);
@@ -86,7 +86,6 @@
 
   .headings {
     box-sizing: border-box;
-    padding-inline: var(--base-padding-inline);
     color: inherit;
 
     h3 {

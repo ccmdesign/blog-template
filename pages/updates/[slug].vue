@@ -1,58 +1,107 @@
 <template>
-  <blog-hero mini />
+  <blog-hero mini/>
   <div class="center">
-    
-  </div>
-
-  <article class="blogpost-layout">
-    <main>
-      
-      <blog-section container="blog-headigns">
+    <article class="blogpost-layout">
+      <header>
         <nuxt-link class="button" visual="unstyled" to="/updates" icon="arrow_back">Back to Blog</nuxt-link>
-        <blog-headings :title="data.blog.title" :brow="data.blog.brow" :tagline="data.blog.tagline" />
-      </blog-section>
-      <blog-section>
-          <!-- <img :src="data.blog.cover_image" alt="" /> -->
-          <div class="prose" v-html="data.blog.content"></div>
-      </blog-section>
-    </main>
-    
-    <aside>
-      <audio controls>
-        <source :src="data.blog.audio_version" type="audio/mpeg" />
-        <a :href="data.blog.audio_version" download>Audio version</a>
-      </audio>
-      <ul>
-        <li v-for="i in data.blog.tags">
-          <blog-chip 
-            v-for="tag in content.tags" 
-            :key="tag.tag_slug" 
-            :path="tag.tag_slug" 
-            :label="tag.tag_label"
-          />
-        </li>
-      </ul>
-      <p>{{ data.blog.date }}</p>
-    </aside>
-  </article>
+        <blog-headings :title="data.blog.title" :brow="data.blog.brow" :tagline="data.blog.tagline" class="post-headings"/>
+        <p>{{ data.blog.meta }}</p>
+      </header>
+      
+      <main>
+        <img v-if="data.blog.cover_image" :src="data.blog.cover_image" alt="" />
+        <div class="prose" v-html="data.blog.content"></div>
+      </main>
+      
+      <aside>
+        <audio controls>
+          <source :src="data.blog.audio_version" type="audio/mpeg" />
+          <a :href="data.blog.audio_version" download>Audio version</a>
+        </audio>
+
+        <ul class="stack | desktop-only" v-if="data.blog.authors.length">
+          <li v-for="author in data.blog.authors" :key="author.name" class="author">
+            <img :src="author.picture" :alt="author.name" class="author__image" />
+            <p><a class="author__name" :href="author.bioLink" target="_blank">{{ author.name }} {{ author.lastName }}</a></p>
+            <p>{{ author.title }}</p>
+          </li>
+        </ul>
+        
+        <ul v-if="data.blog.tags && data.blog.tags.length">
+          <li v-for="i in data.blog.tags">
+            <blog-chip 
+              v-for="tag in content.tags" 
+              :key="tag.tag_slug" 
+              :path="tag.tag_slug" 
+              :label="tag.tag_label"
+            />
+          </li>
+        </ul>
+      </aside>
+    </article>
+  </div>
 </template>
 
 <style lang="scss" scoped>
   .blogpost-layout {
-    
+    padding-inline: var(--space-xs-s);
+    max-width: 100ch;
+    margin-inline: auto;
+    gap: var(--space-s-m);
     display: grid;
-    grid-template-columns: 1fr minmax(280px, 350px);
-    grid-template-areas: "main sidebar";
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr; 
+    grid-template-areas: "header" "sidebar" "main";
+
+    @media screen and (min-width: 800px) {
+      grid-template-rows: auto auto;
+      grid-template-columns: 1fr minmax(280px, 350px);
+      grid-template-areas: "header header" "main sidebar";
+    }
   }
 
-  main {
-    grid-area: main;
-  }
+  header { grid-area: header; }
+  .post-headings { padding-top: var(--space-s-m); }
 
+  main, 
   aside {
-    grid-area: sidebar;
-    padding: 1rem;
+    @media screen and (min-width: 800px) { padding-block: var(--space-l-xl); }
   }
+
+  main { 
+    grid-area: main; 
+    padding-bottom: var(--space-l-xl);
+  }
+  aside { 
+    grid-area: sidebar; 
+
+    audio { width: 100%; }
+  }
+
+  .stack {
+    padding: 0;
+    * { --_stack-space: var(--space-m-l); }
+  }
+
+  .author {
+    align-self: center;
+    text-align: center;
+    list-style: none;
+
+    p { margin: 0; }
+  }
+
+  .author__name {
+
+  }
+
+  .author__image {
+    border-radius: 200px;
+    aspect-ratio: 1;
+    max-width: 180px;
+  }
+
+
 </style>
 
 <script setup>
@@ -108,11 +157,26 @@
     parseInt(dateParts[2])
   );
 
-  data.blog.meta = `by ${
-    data.blog.author ? data.blog.author : "Blog Template"
-  } • ${
-    months[data.blog.date.getMonth()]
-  } ${data.blog.date.getDate()}, ${data.blog.date.getFullYear()}`;
+  // data.blog.authors = [
+  //   {
+  //     name: "Beth Simone Noveck",
+  //     avatar: "/images/beth.jpg",
+  //   },
+  //   {
+  //     name: "Autumn Sloboda",
+  //     avatar: "/images/autumn.jpg",
+  //   }
+  // ]
+
+if (Array.isArray(data.blog.authors) && data.blog.authors.length > 0) {
+  const authorNames = data.blog.authors.map(author => author.name);
+  const formattedAuthorNames = authorNames.length > 1 
+    ? authorNames.slice(0, -1).join(", ") + " and " + authorNames.slice(-1)
+    : authorNames[0];
+  data.blog.meta = `By ${formattedAuthorNames} on ${months[data.blog.date.getMonth()]} ${data.blog.date.getDate()}, ${data.blog.date.getFullYear()}`;
+} else {
+  data.blog.meta = `By Blog Template • ${months[data.blog.date.getMonth()]} ${data.blog.date.getDate()}, ${data.blog.date.getFullYear()}`;
+}
 
   const currentUrl = ref("");
   onMounted(() => {
