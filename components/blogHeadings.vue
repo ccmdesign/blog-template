@@ -3,8 +3,8 @@
     <div class="stack">
       <slot>
         <h3 v-if="brow" class="headings__brow">{{ brow }}</h3>
-        <h1 v-if="title" class="headings__title">{{ title }}</h1>
-        <h4 v-if="tagline" class="headings__tagline">{{ tagline }}</h4>
+        <h1 v-if="title" class="headings__title" v-html="title"></h1>
+        <h4 v-if="tagline" class="headings__tagline" v-html="tagline"></h4>
       </slot>
     </div>
   </hgroup>

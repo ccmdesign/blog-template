@@ -1,8 +1,10 @@
 <template>
-  <fieldset class="search form-group">
-    <input type="search" />
-    <input class="button" type="submit" visual="primary" color="accent"/>
-  </fieldset>
+  <form action="/search">
+    <fieldset class="search form-group">
+        <input type="search" name="term" />
+        <input class="button" type="submit" visual="primary" color="accent"/>
+    </fieldset>
+  </form>
 </template>
 
 <script setup></script>
