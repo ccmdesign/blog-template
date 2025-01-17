@@ -48,9 +48,7 @@
     "about": "We use artificial intelligence to empower institutions and communities to collaboratively solve problems, believing it can strengthen participatory democracy. By fostering meaningful engagement, we aim to achieve better governance, improved outcomes, and increased trust in institutions and one another. As researchers, we are dedicated to exploring how democracy can be effectively practiced and reimagined at scale, emboldened by the transformative possibilities of generative AI.",
     "links": [
       { "name": "About", "path": "/about" },
-      { "name": "Contact", "path": "/contact" },
-      { "name": "Privacy Policy", "path": "/privacy-policy" },
-      { "name": "Terms of Service", "path": "/terms-of-service" }
+      { "name": "Contact", "path": "/contact" }
     ]
   }
 }
