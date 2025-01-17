@@ -1,6 +1,7 @@
 <template>
   <main>
-    <blog-hero title="Updates" >
+    <blog-hero :title="tagTitle" >
+      <nuxt-link class="button" visual="unstyled" to="/updates" icon="arrow_back">Back to Blog</nuxt-link>
       <featured-blog-section :loop="true" layout="reel" :items="data.featuredItems.slice(0, 4)"></featured-blog-section>
     </blog-hero>
     <blog-partners :logos="projectConfig.project_partners" />
@@ -30,8 +31,6 @@ const blog = await queryContent('blogposts').where({ 'array_of_tag_slug': {
   $contains: route.params.slug
 } }).sort({ date: -1 }).find()
 
-
-
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 const data = reactive({
@@ -39,7 +38,8 @@ const data = reactive({
     featuredItems: []
 });
 
-
+const tags = blog.map(post => post.tags).flat()
+const tagTitle = tags.find(tag => tag.tag_slug === route.params.slug).tag_label
 
 watchEffect(() => {
   // Reorder the items array based on the date attribute
