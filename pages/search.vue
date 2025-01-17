@@ -1,7 +1,6 @@
 <template>
   <main>
     <blog-hero mini/>
-    <blog-partners :logos="projectConfig.project_partners" />
     <blog-post-list :content="data.filteredList" class="margin-bottom:xl-2xl"/>
   </main>
 </template>

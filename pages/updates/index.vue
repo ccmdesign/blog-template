@@ -1,7 +1,7 @@
 <template>
   <main>
     <blog-hero title="Updates" >
-      <featured-blog-section :loop="true" layout="reel" :items="data.featuredItems.slice(0, 4)"></featured-blog-section>
+      <featured-blog-section :loop="true" layout="reel" :items="data.featuredItems.slice(0, 5)"></featured-blog-section>
     </blog-hero>
     <blog-partners :logos="projectConfig.project_partners" />
     <blog-post-list :content="data.items" class="margin-bottom:xl-2xl"/>

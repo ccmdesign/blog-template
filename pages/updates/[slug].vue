@@ -28,12 +28,11 @@
         </ul>
         
         <ul v-if="data.blog.tags && data.blog.tags.length">
-          <li v-for="i in data.blog.tags">
+          <li v-for="i in data.blog.tags" style="padding-bottom: 1rem;">
             <blog-chip 
-              v-for="tag in content.tags" 
-              :key="tag.tag_slug" 
-              :path="tag.tag_slug" 
-              :label="tag.tag_label"
+              :key="i.tag_slug" 
+              :path="i.tag_slug" 
+              :label="i.tag_label"
             />
           </li>
         </ul>

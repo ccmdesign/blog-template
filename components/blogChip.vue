@@ -1,8 +1,5 @@
 <template>
-  <component
-    :is="path ? 'nuxt-link' : 'span'"
-    class="chip"
-    :to="path">
+  <component :is="path ? 'nuxt-link' : 'span'" class="chip" :to="customPath" @click="goTotags">
     <slot>
       {{ label }}
     </slot>
@@ -21,6 +18,14 @@
     },
   });
 
+  const customPath = computed(() => {
+    return props.path ? '/updates/tags/' + props.path : '';
+  });
+
+  const router = useRouter()
+  const goTotags = () => {
+    router.push(customPath.value)
+  }
 
 </script>
 
@@ -45,5 +50,9 @@
     border-radius: var(--_chip-border-radius);
     border: var(--_chip-border-width) solid var(--_chip-border-color);
     box-shadow: var(--_chip-shadow);
+  }
+
+  .chip {
+    cursor: pointer;
   }
 </style>

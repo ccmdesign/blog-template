@@ -45,10 +45,8 @@ const objectContructor = async (dir, fs) => {
       }
     }) : []
 
+    i.featured = item.featured;
     i.array_of_tag_slug = item.Tags ? item.Tags.map(item => common.slugify(item)) : [];
-
-    //USED FOR TEST, REMOVE AFTER
-    i.featured = Math.ceil(Math.random() * 11) > 5
 
     fs.writeFile(
       dir + "/" + i.slug + ".json",
